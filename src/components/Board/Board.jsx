@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import { TickTackButton } from "@/components/UI/TickTackButton/TickTackButton";
 
+import { Button } from "@/components/UI/Button/Button";
+
 import "./Board.scss";
-import { Button } from "../UI/Button/Button";
 
 export const Board = () => {
   const [board, setBoard] = useState(Array(9).fill(""));
@@ -57,7 +58,7 @@ export const Board = () => {
   return (
     <div className="board container">
       <h1>Board</h1>
-      {player && <div className="board__player">{player} is winner!</div>}
+      {player && <div className="board__player">{player} is a winner!</div>}
       <div className="board__grid">
         {board.map((item, idx) => (
           <TickTackButton
@@ -65,6 +66,7 @@ export const Board = () => {
             value={item}
             index={idx}
             handleClick={handleClick}
+            turn={item}
           />
         ))}
       </div>
