@@ -5,6 +5,7 @@ import { TickTackButton } from "@/components/UI/TickTackButton/TickTackButton";
 import { Button } from "@/components/UI/Button/Button";
 
 import "./Board.scss";
+import { Header } from "../Header/Header";
 
 export const Board = () => {
   const [board, setBoard] = useState(Array(9).fill(""));
@@ -65,38 +66,7 @@ export const Board = () => {
 
   return (
     <div className="board container">
-      {/* <h1>Board</h1> */}
-      <div className="board__scores">
-        <h1>Scores:</h1>
-        <div className="board__scores__players">
-          <h2>
-            Player1 (
-            <span
-              style={{
-                textShadow:
-                  "0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa",
-                color: "blue",
-              }}
-            >
-              X
-            </span>
-            ): {Xscores}
-          </h2>
-          <h2>
-            Player2 (
-            <span
-              style={{
-                textShadow:
-                  "0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa",
-                color: "red",
-              }}
-            >
-              O
-            </span>
-            ): {Oscores}
-          </h2>
-        </div>
-      </div>
+      <Header Xscores={Xscores} Oscores={Oscores} />
       {player && <div className="board__player">{player} is a winner!</div>}
       <div className="board__grid">
         {board.map((item, idx) => (
