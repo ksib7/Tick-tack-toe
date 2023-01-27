@@ -10,6 +10,8 @@ export const Board = () => {
   const [board, setBoard] = useState(Array(9).fill(""));
   const [turn, setTurn] = useState("X");
   const [player, setPlayer] = useState("");
+  const [Xscores, setXScores] = useState(0);
+  const [Oscores, setOScores] = useState(0);
 
   useEffect(() => {
     const winningTurn = [
@@ -36,6 +38,12 @@ export const Board = () => {
       if (winner) {
         setPlayer(winner === "X" ? "Player 1" : "Player 2");
       }
+
+      if (winner === "X") {
+        setXScores(Xscores + 1);
+      } else if (winner === "O") {
+        setOScores(Oscores + 1);
+      }
     }
   }, [board]);
 
@@ -57,7 +65,38 @@ export const Board = () => {
 
   return (
     <div className="board container">
-      <h1>Board</h1>
+      {/* <h1>Board</h1> */}
+      <div className="board__scores">
+        <h1>Scores:</h1>
+        <div className="board__scores__players">
+          <h2>
+            Player1 (
+            <span
+              style={{
+                textShadow:
+                  "0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa",
+                color: "blue",
+              }}
+            >
+              X
+            </span>
+            ): {Xscores}
+          </h2>
+          <h2>
+            Player2 (
+            <span
+              style={{
+                textShadow:
+                  "0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa",
+                color: "red",
+              }}
+            >
+              O
+            </span>
+            ): {Oscores}
+          </h2>
+        </div>
+      </div>
       {player && <div className="board__player">{player} is a winner!</div>}
       <div className="board__grid">
         {board.map((item, idx) => (

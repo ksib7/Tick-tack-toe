@@ -11,11 +11,31 @@
     animation: flicker 1.5s infinite alternate;
     color: #fff;
     font-size: 23px;
+    margin-top: 40px;
   }
 
   & h1 {
     color: #fff;
-    font-size: 46px;
+    font-size: 40px;
+  }
+
+  & h2 {
+    color: #fff;
+    font-size: 16px;
+  }
+
+  &__scores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed black;
+    padding-bottom: 40px;
+
+    &__players {
+      gap: 20px;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
