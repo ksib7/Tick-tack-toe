@@ -37,7 +37,7 @@ export const Board = () => {
       winner = isFinished ? checkValue : null;
 
       if (winner) {
-        setPlayer(winner === "X" ? "Player 1" : "Player 2");
+        setPlayer(winner === "X" ? "X" : "O");
       }
 
       if (winner === "X") {

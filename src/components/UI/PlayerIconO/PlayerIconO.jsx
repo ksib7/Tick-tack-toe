@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const PlayerIconO = ({ Oscores }) => {
+  const [status, setStatus] = useState(false);
+  const [value, setValue] = useState("");
+
   return (
     <div className="modal">
       <svg
@@ -32,7 +35,26 @@ export const PlayerIconO = ({ Oscores }) => {
           />
         </g>
       </svg>
-      <p className="modal__name">Name: {Oscores}</p>
+      {status ? (
+        <div className="modal__form">
+          <input
+            className="modal__input"
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+            type="text"
+          />
+          <button
+            style={{ width: "37px", alignSelf: "end" }}
+            onClick={() => setStatus(!status)}
+          >
+            Save
+          </button>
+        </div>
+      ) : (
+        <p onClick={() => setStatus(!status)} className="modal__name">
+          {!value ? "Name" : value}: {Oscores}
+        </p>
+      )}
       <p style={{ color: "red" }} className="modal__turn">
         O
       </p>

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./PlayerIconX.scss";
 
 export const PlayerIconX = ({ Xscores }) => {
+  const [status, setStatus] = useState(false);
+  const [value, setValue] = useState("");
+
   return (
     <div className="modal">
       <svg
@@ -10,6 +13,7 @@ export const PlayerIconX = ({ Xscores }) => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1024.000000 1024.000000"
         className="modal__svg"
+        onClick={() => setStatus(!status)}
       >
         <g
           transform="translate(0.000000,1024.000000) scale(0.100000,-0.100000)"
@@ -34,7 +38,26 @@ export const PlayerIconX = ({ Xscores }) => {
           />
         </g>
       </svg>
-      <p className="modal__name">Name: {Xscores}</p>
+      {status ? (
+        <div className="modal__form">
+          <input
+            className="modal__input"
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+            type="text"
+          />
+          <button
+            style={{ width: "37px", alignSelf: "end" }}
+            onClick={() => setStatus(!status)}
+          >
+            Save
+          </button>
+        </div>
+      ) : (
+        <p onClick={() => setStatus(!status)} className="modal__name">
+          {!value ? "Name" : value}: {Xscores}
+        </p>
+      )}
       <p style={{ color: "blue" }} className="modal__turn">
         X
       </p>
