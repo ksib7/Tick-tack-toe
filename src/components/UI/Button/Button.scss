@@ -1,9 +1,12 @@
 .button {
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 700;
-  background: #fff;
+  background: none;
   border: none;
   border-radius: 5px;
   padding: 3px 10px;
   cursor: pointer;
+  box-shadow: 0 0 0px #fff, 0 0 0px #fff, 0 0 0px #fff, 0 0 0px #0fa,
+    0 0 0px #0fa, 0 0 0px #0fa, 0 0 5px #0fa, 0 0 10px #0fa;
+  color: white;
 }

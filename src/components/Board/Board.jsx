@@ -62,6 +62,7 @@ export const Board = () => {
   const resetTurn = () => {
     setBoard(Array(9).fill(""));
     setPlayer("");
+    setTurn(turn === "X" ? "O" : "X");
   };
 
   return (
@@ -79,7 +80,7 @@ export const Board = () => {
           />
         ))}
       </div>
-      <Button resetTurn={resetTurn}>Reset</Button>
+      <Button resetTurn={resetTurn}>New game</Button>
     </div>
   );
 };
