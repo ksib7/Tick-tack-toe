@@ -2,9 +2,8 @@ import React, { useState } from "react";
 
 import "./PlayerIconX.scss";
 
-export const PlayerIconX = ({ Xscores }) => {
+export const PlayerIconX = ({ Xscores, player1, setPlayer1 }) => {
   const [status, setStatus] = useState(false);
-  const [value, setValue] = useState("");
 
   return (
     <div className="modal">
@@ -42,8 +41,8 @@ export const PlayerIconX = ({ Xscores }) => {
         <div className="modal__form">
           <input
             className="modal__input"
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
+            onChange={(e) => setPlayer1(e.target.value)}
+            value={player1}
             type="text"
           />
           <button
@@ -55,7 +54,7 @@ export const PlayerIconX = ({ Xscores }) => {
         </div>
       ) : (
         <p onClick={() => setStatus(!status)} className="modal__name">
-          {!value ? "Name" : value}: {Xscores}
+          {!player1 ? "Name" : player1}: {Xscores}
         </p>
       )}
       <p style={{ color: "blue" }} className="modal__turn">

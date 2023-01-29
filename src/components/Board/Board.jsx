@@ -10,7 +10,9 @@ import { Header } from "../Header/Header";
 export const Board = () => {
   const [board, setBoard] = useState(Array(9).fill(""));
   const [turn, setTurn] = useState("X");
-  const [player, setPlayer] = useState("");
+  const [player1, setPlayer1] = useState("");
+  const [player2, setPlayer2] = useState("");
+  const [win, setWin] = useState("");
   const [Xscores, setXScores] = useState(0);
   const [Oscores, setOScores] = useState(0);
 
@@ -37,7 +39,7 @@ export const Board = () => {
       winner = isFinished ? checkValue : null;
 
       if (winner) {
-        setPlayer(winner === "X" ? "X" : "O");
+        setWin(winner === "X" ? player1 : player2);
       }
 
       if (winner === "X") {
@@ -49,7 +51,7 @@ export const Board = () => {
   }, [board]);
 
   const handleClick = (idx) => {
-    if (idx < 0 || idx > 8 || board[idx] || player) {
+    if (idx < 0 || idx > 8 || board[idx] || win) {
       return;
     } else {
       const newboard = [...board];
@@ -61,14 +63,21 @@ export const Board = () => {
 
   const resetTurn = () => {
     setBoard(Array(9).fill(""));
-    setPlayer("");
+    setWin("");
     setTurn(turn === "X" ? "O" : "X");
   };
 
   return (
     <div className="board container">
-      <Header Xscores={Xscores} Oscores={Oscores} />
-      {player && <div className="board__player">{player} is a winner!</div>}
+      <Header
+        player1={player1}
+        setPlayer1={setPlayer1}
+        player2={player2}
+        setPlayer2={setPlayer2}
+        Xscores={Xscores}
+        Oscores={Oscores}
+      />
+      {win && <div className="board__player">{win} is a winner!</div>}
       <div className="board__grid">
         {board.map((item, idx) => (
           <TickTackButton

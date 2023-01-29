@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-export const PlayerIconO = ({ Oscores }) => {
+export const PlayerIconO = ({ Oscores, player2, setPlayer2 }) => {
   const [status, setStatus] = useState(false);
-  const [value, setValue] = useState("");
 
   return (
     <div className="modal">
@@ -39,8 +38,8 @@ export const PlayerIconO = ({ Oscores }) => {
         <div className="modal__form">
           <input
             className="modal__input"
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
+            onChange={(e) => setPlayer2(e.target.value)}
+            value={player2}
             type="text"
           />
           <button
@@ -52,7 +51,7 @@ export const PlayerIconO = ({ Oscores }) => {
         </div>
       ) : (
         <p onClick={() => setStatus(!status)} className="modal__name">
-          {!value ? "Name" : value}: {Oscores}
+          {!player2 ? "Name" : player2}: {Oscores}
         </p>
       )}
       <p style={{ color: "red" }} className="modal__turn">
