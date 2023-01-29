@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { TickTackButton } from "@/components/UI/TickTackButton/TickTackButton";
-
+import { Header } from "@/components/Header/Header";
 import { Button } from "@/components/UI/Button/Button";
 
 import "./Board.scss";
-import { Header } from "../Header/Header";
 
 export const Board = () => {
   const [board, setBoard] = useState(Array(9).fill(""));

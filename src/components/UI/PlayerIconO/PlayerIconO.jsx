@@ -10,6 +10,7 @@ export const PlayerIconO = ({ Oscores, player2, setPlayer2 }) => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1024.000000 1024.000000"
         className="modal__svg"
+        onClick={() => setStatus(!status)}
       >
         <g
           transform="translate(0.000000,1024.000000) scale(0.100000,-0.100000)"
